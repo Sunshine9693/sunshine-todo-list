@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TO-DO LIST</title>
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- CSS FILE -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+    <!-- APP HEADER -->
+    <header class="app-header">
+        <button id="menuBtn"><i class="fas fa-bars"></i></button>
+        <span class="app-title">SUNSHINE'S TO-DO LIST</span>
+    </header>
+
+    <!-- SIDEBAR DRAWER -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>Menu</h2>
+            <button id="closeMenuBtn"><i class="fas fa-times"></i></button>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-link tab-active" data-target="home-view"><i class="fas fa-home"></i> Tasks</a>
+            <a href="#" class="nav-link" data-target="extras-view"><i class="fas fa-star"></i> Extras</a>
+            <a href="#" class="nav-link" data-target="notes-view"><i class="fas fa-sticky-note"></i> Notes</a>
+        </nav>
+        <div class="sidebar-extras">
+            <button id="modeToggle" class="sidebar-btn"><i class="fas fa-moon"></i> Toggle Theme</button>
+            <div class="sidebar-quote-box">
+                <i class="fas fa-quote-left" style="color: #666; font-size: 20px; margin-bottom: 10px; display: block;"></i>
+                <div class="motivation-area" id="motivationQuote"></div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTAINER -->
+    <div class="container">
+        
+        <!-- HOME VIEW -->
+        <section id="home-view" class="view active">
+
+            <h1 class="view-title">My Tasks <i class="fas fa-tasks"></i></h1>
+            
+            <!-- Motivational Quote -->
+            <div class="main-motivation-quote">
+                <i class="fas fa-quote-left"></i>
+                <span id="mainMotivationQuote"></span>
+                <i class="fas fa-quote-right"></i>
+            </div>
+        
+            <!-- Smart Suggestion -->
+        <div class="smart-suggestion hidden" id="smartSuggestion">
+            <i class="fas fa-lightbulb" style="color: #f1c40f; margin-right: 8px; font-size: 18px;"></i> 
+            <span id="suggestionText"></span>
+        </div>
+
+        <!-- Input Area -->
+        <div class="input-area">
+            <input type="text" id="taskInput" placeholder="Enter your Task...">
+            
+            <input type="datetime-local" id="dueDateInput" title="Set Deadline">
+
+            <select id="priority">
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+            </select>
+
+            <button id="addBtn">+ Add</button>
+        </div>
+
+        <!-- Search Area -->
+        <div class="search-area">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Search tasks...">
+        </div>
+
+        <!-- COUNTERS -->
+        <div class="counters">
+            <p>Total: <span id="totalCount">0</span></p>
+            <p>Completed: <span id="completedCount">0</span></p>
+            <p>Pending: <span id="pendingCount">0</span></p>
+        </div>
+
+        <!-- PROGRESS CIRCLE -->
+        <div class="progress-container">
+            <div class="circular-progress">
+                <span id="progressValue">0%</span>
+            </div>
+        </div>
+
+        <!-- TASK LIST -->
+        <ul id="taskList"></ul>
+
+        </section>
+
+        <!-- EXTRAS VIEW -->
+        <section id="extras-view" class="view">
+            <h1 class="view-title">Extra Features <i class="fas fa-star"></i></h1>
+            <div style="text-align: center; padding: 40px; color: #555; background: rgba(255,255,255,0.5); border-radius: 10px;">
+                <i class="fas fa-tools" style="font-size: 40px; margin-bottom: 15px; color: #888;"></i>
+                <h2>More features coming soon!</h2>
+                <p style="margin-top: 10px">Your new routing architecture holds infinite possibilities.</p>
+            </div>
+        </section>
+
+        <!-- NOTES VIEW -->
+        <section id="notes-view" class="view">
+            <h1 class="view-title">My Notes <i class="fas fa-sticky-note"></i></h1>
+            
+            <!-- Theme Selector -->
+            <div class="theme-selector">
+                <h3><i class="fas fa-palette"></i> Choose Theme</h3>
+                <div class="theme-buttons">
+                    <button class="theme-btn" data-theme="default"><i class="fas fa-sun"></i> Default</button>
+                    <button class="theme-btn" data-theme="rainbow"><i class="fas fa-rainbow"></i> Rainbow</button>
+                    <button class="theme-btn" data-theme="hearts"><i class="fas fa-heart"></i> Hearts</button>
+                    <button class="theme-btn" data-theme="dots"><i class="fas fa-circle"></i> Dots</button>
+                    <button class="theme-btn" data-theme="lines"><i class="fas fa-minus"></i> Lines</button>
+                </div>
+            </div>
+
+            <!-- Add Note Form -->
+            <div class="note-form">
+                <textarea id="noteInput" placeholder="Write your note here..." rows="3"></textarea>
+                <button id="addNoteBtn"><i class="fas fa-plus"></i> Add Note</button>
+            </div>
+
+            <!-- Notes List -->
+            <div class="notes-list" id="notesList">
+                <!-- Notes will be added here -->
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JAVASCRIPT FILE -->
+    <script src="app.js"></script>
+
+</body>
+</html>
